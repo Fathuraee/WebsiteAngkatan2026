@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Kegiatan — Orcavala</title>
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Inter:wght@400;500;600&display=swap">
+
+  <!-- Tailwind (untuk tata letak) + style sendiri -->
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="icon" href="img/logo-emblem.jpg">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-halaman="kegiatan">
+
+  <!-- Navbar diisi oleh layout.js -->
+  <div id="navbar"></div>
+
+  <main>
+
+    <!-- ================= KEGIATAN =================
+         Kartu dibuat otomatis oleh kegiatan.js dari data di data.js -->
+    <section id="kegiatan" class="max-w-6xl mx-auto px-4 py-16">
+      <p class="eyebrow">Kegiatan angkatan</p>
+      <h2 class="text-3xl font-bold mt-2">Agenda &amp; dokumentasi</h2>
+      <p class="mt-3 max-w-2xl text-mute">
+        Kegiatan yang pernah dan akan dilakukan angkatan 2026. Saring berdasarkan kategori.
+      </p>
+
+      <div id="filterKategori" class="flex flex-wrap gap-2 mt-6"></div>
+      <div id="daftarKegiatan" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6"></div>
+    </section>
+
+  </main>
+
+  <!-- Footer diisi oleh layout.js -->
+  <div id="footer"></div>
+
+  <!-- Urutan penting: data → layout → skrip halaman -->
+  <script src="data.js"></script>
+  <script src="layout.js"></script>
+  <script src="kegiatan.js"></script>
+</body>
+</html>

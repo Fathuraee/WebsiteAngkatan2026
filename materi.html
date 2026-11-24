@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Materi Kuliah — Orcavala</title>
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Inter:wght@400;500;600&display=swap">
+
+  <!-- Tailwind (untuk tata letak) + style sendiri -->
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="icon" href="img/logo-emblem.jpg">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-halaman="materi">
+
+  <!-- Navbar diisi oleh layout.js -->
+  <div id="navbar"></div>
+
+  <main>
+
+    <!-- ================= MATERI KULIAH =================
+         Kartu dibuat otomatis oleh script.js dari data di data.js -->
+    <section id="materi" class="max-w-6xl mx-auto px-4 py-16">
+      <p class="eyebrow">Materi kuliah</p>
+      <h2 class="text-3xl font-bold mt-2">Perpustakaan materi</h2>
+      <p class="mt-3 max-w-2xl text-mute">
+        Cari mata kuliah atau saring berdasarkan semester. Klik kartu untuk membuka folder materinya.
+      </p>
+
+      <div class="mt-6 max-w-md">
+        <input id="q" type="search" placeholder="Cari nama atau kode mata kuliah…">
+      </div>
+
+      <div id="filters" class="flex flex-wrap gap-2 mt-4"></div>
+      <div id="grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6"></div>
+      <p id="empty" class="hidden mt-6 text-mute">Tidak ada materi yang cocok.</p>
+    </section>
+
+  </main>
+
+  <!-- Footer diisi oleh layout.js -->
+  <div id="footer"></div>
+
+  <!-- Urutan penting: data → layout → skrip halaman -->
+  <script src="data.js"></script>
+  <script src="layout.js"></script>
+  <script src="materi.js"></script>
+</body>
+</html>

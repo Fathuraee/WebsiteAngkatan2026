@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Struktur Organigram — Orcavala</title>
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Inter:wght@400;500;600&display=swap">
+
+  <!-- Tailwind (untuk tata letak) + style sendiri -->
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="icon" href="img/logo-emblem.jpg">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-halaman="struktur">
+
+  <!-- Navbar diisi oleh layout.js -->
+  <div id="navbar"></div>
+
+  <main>
+
+    <!-- ================= STRUKTUR ORGANIGRAM =================
+         Dibuat otomatis oleh struktur.js dari data ORGANIGRAM di data.js -->
+    <section id="struktur" class="max-w-6xl mx-auto px-4 py-16">
+      <p class="eyebrow">Struktur organisasi</p>
+      <h2 class="text-3xl font-bold mt-2">Organigram Angkatan 2026</h2>
+      <p class="mt-3 max-w-2xl text-mute">
+        Susunan pengurus angkatan Orcavala, dari pimpinan hingga koordinator.
+      </p>
+
+      <div id="organigram" class="org mt-12"></div>
+    </section>
+
+  </main>
+
+  <!-- Footer diisi oleh layout.js -->
+  <div id="footer"></div>
+
+  <!-- Urutan penting: data → layout → skrip halaman -->
+  <script src="data.js"></script>
+  <script src="layout.js"></script>
+  <script src="struktur.js"></script>
+</body>
+</html>

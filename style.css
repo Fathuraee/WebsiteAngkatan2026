@@ -1,0 +1,230 @@
+/* =====================================================
+   ORCAVALA – STYLE
+   Daftar isi:
+   1. Warna (terang & gelap)  2. Dasar halaman
+   3. Komponen (kartu, tombol, chip, dll.)
+   ===================================================== */
+
+
+/* ---------- 1. WARNA ----------
+   Ubah warna situs cukup di bagian ini. */
+:root {
+  --bg:     #f6f8fc;   /* latar halaman */
+  --card:   #ffffff;   /* latar kartu */
+  --soft:   #e8eef8;   /* latar section selang-seling */
+  --ink:    #0f1f3d;   /* teks utama */
+  --mute:   #51607e;   /* teks sekunder */
+  --navy:   #002447;   /* biru tua logo (warna utama) */
+  --accent: #0060bf;   /* biru aksen */
+  --line:   #dbe3f0;   /* garis tepi */
+  --header: rgba(246, 248, 252, 0.9);
+
+  color-scheme: light;
+
+  /* Jarak aman untuk HP berponi */
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Mode gelap otomatis mengikuti perangkat.
+   Nilainya sama dengan blok [data-theme="dark"] di bawah
+   (ditulis dua kali karena aturan CSS-nya berbeda). */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0a1426;  --card: #111f38;  --soft: #162a4d;
+    --ink: #e8eefb; --mute: #9db0d1;
+    --navy: #8db3ee; --accent: #5b8fd9;
+    --line: #22345a; --header: rgba(10, 20, 38, 0.9);
+    color-scheme: dark;
+  }
+}
+
+/* Mode gelap manual (tombol ◐) */
+:root[data-theme="dark"] {
+  --bg: #0a1426;  --card: #111f38;  --soft: #162a4d;
+  --ink: #e8eefb; --mute: #9db0d1;
+  --navy: #8db3ee; --accent: #5b8fd9;
+  --line: #22345a; --header: rgba(10, 20, 38, 0.9);
+  color-scheme: dark;
+}
+
+
+/* ---------- 2. DASAR HALAMAN ---------- */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 70px);
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Inter, system-ui, sans-serif;
+}
+
+/* Penutup area poni HP */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  background: var(--header);
+  z-index: 50;
+}
+
+h1, h2, h3, .hd {
+  font-family: Sora, Inter, system-ui, sans-serif;
+}
+
+header {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 40;
+  background: var(--header);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+input {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  background: var(--card);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+}
+
+
+/* ---------- 3. KOMPONEN ---------- */
+
+/* Warna teks & latar (pakai variabel di atas) */
+.text-ink    { color: var(--ink); }
+.text-mute   { color: var(--mute); }
+.text-navy   { color: var(--navy); }
+.text-accent { color: var(--accent); }
+.bg-soft     { background: var(--soft); }
+
+/* Wadah putih untuk gambar logo (supaya tetap jelas di mode gelap) */
+.logo-tile {
+  background: #ffffff;
+  border-radius: 1rem;
+}
+
+/* Kartu */
+.card {
+  padding: 1.25rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+}
+
+.card-link {
+  display: block;
+  transition: transform 0.15s;
+}
+.card-link:hover { transform: translateY(-2px); }
+
+/* Ikon bulat di dalam kartu */
+.icon {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.2rem;
+  background: var(--soft);
+  border-radius: 0.75rem;
+}
+
+/* Lingkaran inisial nama */
+.avatar {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 2.75rem;
+  height: 2.75rem;
+  background: var(--soft);
+  color: var(--navy);
+  font-weight: 700;
+  font-size: 0.9rem;
+  border-radius: 50%;
+}
+
+/* Organigram: tiap tingkat satu baris, disambung garis vertikal */
+.org {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+.org-level {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+.org-level + .org-level::before {
+  content: "";
+  position: absolute;
+  top: -2rem;
+  left: 50%;
+  width: 2px;
+  height: 2rem;
+  background: var(--line);
+}
+.org-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  width: 14rem;
+  text-align: center;
+}
+.org-card .avatar { margin-bottom: 0.25rem; }
+
+/* Label kecil di atas judul section */
+.eyebrow {
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* Tombol */
+.btn {
+  display: inline-block;
+  padding: 0.7rem 1.4rem;
+  background: var(--navy);
+  color: var(--bg);
+  font-weight: 600;
+  border-radius: 999px;
+}
+.btn-outline {
+  background: transparent;
+  color: var(--navy);
+  border: 1.5px solid var(--navy);
+}
+
+/* Chip filter */
+.chip {
+  padding: 0.35rem 0.9rem;
+  background: var(--card);
+  color: var(--mute);
+  font-size: 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  cursor: pointer;
+}
+.chip.aktif {
+  background: var(--navy);
+  color: var(--bg);
+  border-color: var(--navy);
+}
+
+/* Cahaya lembut di latar hero */
+.glow {
+  background: radial-gradient(60% 60% at 70% 20%, var(--soft), transparent 70%);
+}
